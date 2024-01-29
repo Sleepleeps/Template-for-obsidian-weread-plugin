@@ -1,5 +1,3 @@
-# Template-for-obsidian-weread-plugin
-Template for obsidian weread plugin
 # ob-微信读书插件模板大魔改``
 
 你一直在找的微信读书模板:
@@ -21,7 +19,7 @@ Template for obsidian weread plugin
 ## 版式
 我一共做了三个版本满足不同需求。
 1. **美化混排版**
-	+ ![[Pasted image 20240129152557.png]]
+	+ ![Pasted image 20240129152557.png](Pasted image 20240129152557.png)
 2. **无格式混排版**
 3. **无格式分组版**
 
