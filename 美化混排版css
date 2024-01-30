@@ -1,0 +1,205 @@
+/*---callout=rnb---*//*---callout=rnb---*//*---callout=rnb---*/
+/*---这个是一个无背景的靠右的悬浮框---*/
+.callout[data-callout="rnb"] {
+	--callout-color:transparent;
+	background-color:transparent;
+	width:40%;
+	float:right;/*靠右悬浮*/
+	border:none;
+	text-align: right;
+}
+
+/*---隐藏标题栏---*/
+.callout[data-callout="rnb"] .callout-title-inner {
+	display: none;
+}
+
+
+/*---callout=weread1---*/
+/*---这里用来展示书的简介abstract---*/
+.callout[data-callout="weread1"] {
+	--callout-color:transparent;
+	background-color:transparent;
+	font-size:0.95em;
+	border:none;
+                text-align:left;
+                padding:30px;
+  
+               
+}
+
+
+.callout[data-callout="weread1"] .callout-title-inner {
+	 display: none;
+}
+
+/*---首字下沉---*/
+.callout[data-callout="weread1"] .callout-content  p::first-letter{
+        
+	 float: left;
+	font-size: 3em;
+	font-weight: bold;
+	line-height: 1;
+	margin: -0.07em 0.1em -0.1em 0;
+}
+
+
+/*---callout=weread2,bookcard---*//*---callout=weread2,bookcard---*//*---callout=weread2,bookcard---*/
+/*---这里用来展示书的卡片---*/
+.callout[data-callout="weread2"] {
+	--callout-color:  245,207,194;
+	display:inline-flex;
+	align-items: center;
+	font-size:0.9em;
+	 width:90%;
+	align-content:center;
+	position:relative;
+	left:6%;
+	color:rgb(142,145,106);
+   
+}
+
+
+/*---callout=weread3,notes---*//*---callout=weread3,notes---*//*---callout=weread3,notes---*/
+/*---设定划线评论样式---*/
+.callout[data-callout="weread3"] {
+	--callout-color: 238,231,187;
+	--callout-icon: quote;
+	border:none;
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+/*---设定标题的样式---*/
+.callout[data-callout="weread3"] .callout-title-inner {
+	padding:15px;
+	font-size:0.9em;
+	font-weight:500;
+	font-family:"猫啃网糖圆体";
+/*这是我自带的字体，可以任意换成喜爱的样式*/
+}
+
+/*---设定划线笔记的样式---*/
+.callout[data-callout="weread3"] .callout-content  {
+	
+	font-family:"ChiuKong Gothic CL";/*这是我自带的字体，可以任意换成喜爱的样式*/
+	font-weight: 300;
+	color:rgb(70,66,52);
+	font-size:1.01em;
+	margin-left: 50px;
+	margin-right: 15px;
+	padding:10px;
+
+}
+
+
+ /*---设定下划线的样式---*/ 
+.callout[data-callout="weread3"] .callout-content hr {
+	border: 0;
+	height: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+ /*---设定悬浮框样式---*/ 
+.callout[data-callout="weread3"]:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	
+
+}
+
+
+ /*---设定日期预览不显示---*/ 
+.callout[data-callout="weread3"] .callout-content ul li:nth-child(2) {
+ 	display: none;
+}
+
+ /*---设定日期悬浮显示---*/ 
+.callout[data-callout="weread3"]:hover  .callout-content ul li:nth-child(2){
+ 	display:inline-flex;
+                float:right;
+	background-color:rgb(15,26,121);
+	color:rgb(220,227,208);
+	font-size:0.7em;
+}
+
+
+/*---callout=weread4,notes---*//*---callout=weread4,notes---*//*---callout=weread4,notes---*/
+/*---设定整体callout的样式---*/
+.callout[data-callout="weread4"] {
+	--callout-color: 225,217,228;
+	--callout-icon: star;
+	border:none;
+	transition: box-shadow 0.3s ease-in-out;
+
+}
+
+/*---设定标题的样式---*/
+.callout[data-callout="weread4"] .callout-title-inner {
+	padding:15px;
+	font-size:0.9em;
+	font-weight:500;
+	font-family:"猫啃网糖圆体";
+/*这是我自带的字体，可以任意换成喜爱的样式*/
+	
+}
+
+ /*---设定下划线的样式---*/ 
+.callout[data-callout="weread4"] .callout-content hr {
+ 
+	border: 0;
+	height: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+
+.callout[data-callout="weread4"]:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	
+}
+
+
+.callout[data-callout="weread4"] .callout-content ul li:first-child {
+ 	display: none;
+}
+	
+
+.callout[data-callout="weread4"]:hover .callout-content ul li:first-child {
+ 	display:inline-flex;
+                float:right;
+	background-color:rgb(15,26,121);
+	color:rgb(220,227,208);
+	font-size:0.7em;
+
+}
+
+/*---callout=nb---*//*---callout=nb---*//*---callout=nb---*/
+/*---这个是一个无背景无边框的全行悬浮框---*/
+/*---我拿来换行的，你也可以用别的办法---*/
+
+
+.callout[data-callout="nb"] {
+	--callout-color:transparent;
+	background-color:transparent;
+	border:none;
+	width:100%;
+   
+}
+
+.callout[data-callout="nb"] .callout-title-inner {
+	 display: none;
+}
+
+
+/*---callout=metadata---*//*---callout=metadata---*//*---callout=metadata---*/
+/*---这是一个去icon写法，在写callout类型时加|noicon就可以，对任何callout包括默认的都适用---*/
+/*---有别的写法---*/
+.callout:is([data-callout-metadata^="noicon"]) .callout-icon {
+	display: none;
+}
+
+
+
+
+
+
