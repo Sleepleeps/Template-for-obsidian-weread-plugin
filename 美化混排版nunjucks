@@ -1,0 +1,76 @@
+---
+isbn: {{metaData.isbn}}
+category: {{metaData.category}}
+lastReadDate: {{metaData.lastReadDate}}
+---
+>[!rnb|noicon] 
+># {{metaData.title}}
+>` {{metaData.author}}`
+
+>[!nb|noicon]
+
+>[!weread1|noicon] 
+> {{metaData.intro}}
+
+>[!weread2|noicon] [![cover|100]({{metaData.cover}})](<{{metaData.title}}细读>)
+> - 作者： {{metaData.author}}
+> - 出版时间： {{metaData.publishTime}}
+> - ISBN： {{metaData.isbn}}
+> - 分类： {{metaData.category}}
+> - 出版社：{{metaData.publishTime|replace("00:00:00","")}}
+> - 划线数量：{{metaData.noteCount}}
+> - 笔记数量： {{metaData.reviewCount}}
+
+>[!nb|noicon]
+
+>[!rnb|noicon] 
+>## 笔记
+
+>[!nb|noicon]
+
+{%- set allNotes = [] -%}
+
+{%- for highlightItem in chapterHighlights -%}
+{%- for highlight in highlightItem.highlights -%} 
+{%- set allNotes = allNotes.concat({'type': 'highlight', 'data': highlight, 'range': highlight.range.split("-")[0] | int}) -%}
+{%- endfor -%}
+{%- endfor -%}
+
+{%- for reviewitem in bookReview.chapterReviews -%}
+{%- for review in reviewitem.reviews -%} 
+{%- set allNotes = allNotes.concat({'type': 'review', 'data': review,'range': review.range.split("-")[0] | int}) -%}
+{%- endfor -%}
+{%- for chapterReview in reviewitem.chapterReviews -%} 
+{%- set allNotes = allNotes.concat({'type': 'chapterReview', 'data': chapterReview}) -%}
+{%- endfor -%}
+{%- endfor -%}
+
+{%- set allNotes = allNotes|sort(attribute='data.chapterUid')|groupby('data.chapterUid') -%}
+
+{% for chapterUid, notes in allNotes %} 
+### {{ notes[0].data.chapterTitle }}
+
+{%- for note in notes|sort(attribute='range') %}
+{% if note.type == 'highlight' and not note.data.reviewContent %}
+>[!weread4] {{ note.data.markText | trim | replace('\n', '<br>') }} ^{{ note.data.chapterUid }}-{{note.data.range}}
+>- {{note.data.createTime}}
+>{{ '---' }}
+{% elif note.type == 'review' %}
+>[!weread3] {{ note.data.abstract | trim | replace('\n', '<br>') }}
+>- {{ note.data.content }} ^{{note.data.reviewId}}
+>- {{note.data.createTime}} 
+>{{ '---' }}
+{% elif note.type == 'chapterReview' %}
+###### ◰章节评论
+*写于{{note.data.createTime}}*
+- {{ note.data.content }} ^{{note.data.reviewId}}
+{%- endif %}
+{%- endfor %}
+{% endfor %}
+
+{%- for bookReview in bookReview.bookReviews %} {% if bookReview.mdContent.length %}
+>[!rnb|noicon] 
+>## 书评 
+*写于{{bookReview.createTime}}*
+{{bookReview.mdContent}} ^{{bookReview.reviewId}}
+{% endif %} {% endfor %}
